@@ -106,8 +106,11 @@ int main(int argc, char *argv[])
             elf_print_dyn(fstart, &e);
         free(e.sh_basic);
     }
+    else if(macho_detect(fstart)) {
+        macho_print_header(fstart);
+    }
     else {
-        fprintf(stderr, "unknown objective file type!\n");
+        fprintf(stderr, "unknown object file type!\n");
         exit(1);
     }
 
